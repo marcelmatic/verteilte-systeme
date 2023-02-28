@@ -1,141 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body style="background-image: url(img/praxisBackground.png)">
-    <div class="container py-4 mt-5">
-      <div class="p-5 mb-4 rounded-3 shadow bg-white">
-        <div class="container-fluid py-5">
-          <h1 class="display-5 fw-bold">Ärzte Team SEEBURGER</h1>
-          <div class="container">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  id="login-tab"
-                  data-toggle="tab"
-                  href="#login"
-                  role="tab"
-                  aria-controls="login"
-                  aria-selected="true"
-                  >Anmelden</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  id="register-tab"
-                  data-toggle="tab"
-                  href="#register"
-                  role="tab"
-                  aria-controls="register"
-                  aria-selected="false"
-                  >Registrieren</a
-                >
-              </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-              <div
-                class="tab-pane fade show active"
-                id="login"
-                role="tabpanel"
-                aria-labelledby="login-tab"
-              >
-                <form>
-                  <div class="form-group">
-                    <label for="username">Benutzername</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="username"
-                      placeholder="Benutzername eingeben"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Passwort</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="password"
-                      placeholder="Passwort"
-                    />
-                  </div>
-                  <button id="submitButton" type="submit" class="btn btn-primary mt-3">
-                    Anmelden
-                  </button>
-                </form>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="register"
-                role="tabpanel"
-                aria-labelledby="register-tab"
-              >
-                <form>
-                  <div class="form-group">
-                    <label for="new-username">Benutzername</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="new-username"
-                      placeholder="Benutzername eingeben"
-                    />
-                  </div>
+<html>
 
-                  <div class="form-group">
-                    <label for="user-type">Rolle</label>
-                    <select class="form-control caret" id="user-type">
-                      <option>Kunde</option>
-                      <option>Arzt</option>
-                      <option>Admin</option>
-                    </select>
-                  </div>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Termin </title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<style>
+		body {
+			background-color: #f8f9fa;
+		}
 
-                  <div class="form-group">
-                    <label for="new-password">Passwort</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="new-password"
-                      placeholder="Passwort"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="confirm-password">Passwort bestätigen</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="confirm-password"
-                      placeholder="Passwort bestätigen"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary mt-3">
-                    Account erstellen
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+		.container {
+			margin-top: 50px;
+		}
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  </body>
+		h1 {
+			font-size: 1.5rem;
+			color: #343a40;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 50px;
+			background-color: #92c9f081;
+			border-radius: 10px;
+			padding: 15px;
+		}
+
+		label {
+			font-size: 1.2rem;
+			color: #343a40;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		input[type="text"],
+		input[type="date"],
+		input[type="time"],
+		select {
+			border: none;
+			border-radius: 0;
+			border-bottom: 1px solid #343a40;
+			padding: 10px;
+			margin-bottom: 20px;
+			background-color: transparent;
+			color: #343a40;
+			font-size: 1.2rem;
+
+		}
+
+		select {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			background-repeat: no-repeat;
+			background-position-x: calc(100% - 10px);
+			background-position-y: 50%;
+			padding-right: 35px;
+
+		}
+
+		select.form-control {
+			font-size: 1.2em;
+		}
+
+		button[type="submit"] {
+			background-color: #0f4f8e;
+			color: #fff;
+			border-radius: 20px;
+			padding: 10px 20px;
+			font-size: 1.2rem;
+			font-weight: bold;
+			border: none;
+			cursor: pointer;
+			transition: background-color 0.3s;
+			margin-top: 30px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #216ab3;
+		}
+
+		input[type="text"]:hover,
+		input[type="date"]:hover,
+		input[type="time"]:hover,
+		select:hover {
+			background-color: #ebebeb;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container shadow rounded border">
+
+		<h1 class="text-center mt-5">Online-Terminservice</h1>
+		<form action="submit.php" method="post" class="mt-5 pb-4">
+			<div class="form-group">
+				<label for="title">Terminart:</label>
+				<input type="text" id="title" name="title" class="form-control rounded" required>
+			</div>
+			<div class="form-group">
+				<label for="date">Datum:</label>
+				<input type="date" id="date" name="date" class="form-control rounded" required>
+			</div>
+			<div class="form-group">
+				<label for="time">Uhrzeit:</label>
+				<input type="time" id="time" name="time" class="form-control rounded" required>
+			</div>
+			<div class="form-group">
+				<label for="insurance">Versicherung:</label>
+				<select id="insurance" name="insurance" class="form-control rounded" required>
+					<option value="">Bitte auswählen</option>
+					<option value="private">Private Versicherung</option>
+					<option value="public">Gesetzliche Versicherung</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary mt-3 mb-0">Termin erstellen </button>
+		</form>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+		integrity="sha384-IG8QFJjKbAcdPyv5X5bWdPm5a5x5SlM84vLdlwLQ8JRKrvj5bCTa5v5fWbO8jK5J"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+
+
+
+
 </html>
