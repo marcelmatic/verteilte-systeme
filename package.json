@@ -1,0 +1,27 @@
+{
+  "name": "verteilte-systeme",
+  "version": "1.0.0",
+  "description": "Create Single Page Application",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcelmatic/verteilte-systeme.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcelmatic/verteilte-systeme/issues"
+  },
+  "homepage": "https://github.com/marcelmatic/verteilte-systeme#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.10.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20"
+  }
+}
