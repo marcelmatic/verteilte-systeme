@@ -2,15 +2,15 @@ GET http://localhost:3000/users
 
 ###
 
-GET http://localhost:3000/users/63fb9ea54ea42a54ed806f41
-
-###
-
 POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "username": "MAIC",
-    "rolle": "Benuer",
-    "passwort": "ABD123"
+  "username": "maticmar",
+  "password": "admin",
+  "role": "admin"
 }
+###
+
+GET http://localhost:3000/appointments/maticmar
+

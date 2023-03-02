@@ -1,51 +1,34 @@
-require("dotenv").config();
-const axios = require("axios");
-const express = require("express");
+// Load required modules
+require("dotenv").config(); // Load environment variables from .env file
+const axios = require("axios"); // Use the Axios package to make HTTP requests
+const express = require("express"); // Use Express to create the server
+const cors = require("cors"); // Use the CORS package to enable Cross-Origin Resource Sharing
 
+// Create an instance of the Express application
 const app = express();
+
+// Import the Mongoose library for MongoDB database connectivity
 const mongoose = require("mongoose");
+mongoose.set("strictQuery", false); // Set the strictQuery option to false to allow for looser queries
 
-mongoose.set("strictQuery", false);
-
+// Connect to the MongoDB database using the DATABASE_URL environment variable
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 const db = mongoose.connection;
-db.on("error", (error) => console.log(error));
-db.once("open", () => console.log("Connected to Database"));
+db.on("error", (error) => console.log(error)); // Log any connection errors
+db.once("open", () => console.log("Connected to Database")); // Log a message when the connection is established
 
+// Use the Express.json() middleware to parse incoming request data as JSON
 app.use(express.json());
 
+app.use(cors());
+
+
+// Set up the user and appointment routes using their respective routers
 const userRouter = require("./routes/users");
 app.use("/users", userRouter);
 
+const appointmentRouter = require("./routes/appointments");
+app.use("/appointments", appointmentRouter);
+
+// Set up the server to listen on port 3000
 app.listen(3000, () => console.log("Connected to Server"));
-
-
-
-var data = JSON.stringify({
-  collection: "users",
-  database: "ver-sys",
-  dataSource: "verteilte-systeme",
-  projection: {
-    _id: 1,
-  },
-});
-
-var config = {
-  method: "post",
-  url: "https://eu-central-1.aws.data.mongodb-api.com/app/data-lqvwu/endpoint/data/v1/action/findOne",
-  headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Request-Headers": "*",
-    "api-key": process.env.DATABASE_API_KEY,
-    Accept: "application/ejson",
-  },
-  data: data,
-};
-
-axios(config)
-  .then(function (response) {
-    console.log(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });

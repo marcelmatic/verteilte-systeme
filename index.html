@@ -1,0 +1,460 @@
+<!-- This is a HTML file for a modal-based event scheduler. 
+  It contains three modals, 'addModal', 'editModal' and 'deleteModal', 
+  for adding, editing and deleting events respectively. 
+  The events can be scheduled with details like title, date, time and insurance type. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-image: url(img/praxisBackground.png)">
+    <!-- 'addModal' modal for adding an event -->
+    <div
+      class="modal fade"
+      id="addModal"
+      tabindex="-1"
+      aria-labelledby="addModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addModalLabel">Termin anlegen</h1>
+            <!-- The close button for the modal -->
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <!-- Input field for event title -->
+              <div class="form-group">
+                <label for="title">Terminart:</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!-- Input field for event date -->
+              <div class="form-group">
+                <label for="date">Datum:</label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!-- Input field for event time -->
+              <div class="form-group">
+                <label for="time">Uhrzeit:</label>
+                <input
+                  type="time"
+                  id="time"
+                  name="time"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <!-- Dropdown for insurance type -->
+              <div class="form-group">
+                <label for="insurance">Versicherung:</label>
+                <select
+                  id="insurance"
+                  name="insurance"
+                  class="form-control"
+                  required
+                >
+                  <option value="">Bitte auswählen</option>
+                  <option value="privat">Private Versicherung</option>
+                  <option value="gesetzlich">Gesetzliche Versicherung</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <!-- The save button for adding an event -->
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Speichern
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 'editModal' modal for editing an event -->
+    <div
+      class="modal fade"
+      id="editModal"
+      tabindex="-1"
+      aria-labelledby="editModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="editModalLabel">
+              Termin bearbeiten
+            </h1>
+            <!-- The close button for the modal -->
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <!-- Input field for event title -->
+              <div class="form-group">
+                <label for="title">Terminart:</label>
+                <input
+                  type="text"
+                  id="titleEdit"
+                  name="title"
+                  class="form-control"
+                />
+              </div>
+              <!-- Input field for event date -->
+              <div class="form-group">
+                <label for="date">Datum:</label>
+                <input
+                  type="date"
+                  id="dateEdit"
+                  name="date"
+                  class="form-control"
+                />
+              </div>
+              <!-- Input field for event time -->
+              <div class="form-group">
+                <label for="time">Uhrzeit:</label>
+                <input
+                  type="time"
+                  id="timeEdit"
+                  name="time"
+                  class="form-control"
+                />
+              </div>
+              <!-- Dropdown for insurance type -->
+              <div class="form-group">
+                <label for="insurance">Versicherung:</label>
+                <select
+                  id="insuranceEdit"
+                  name="insurance"
+                  class="form-control"
+                >
+                  <option>Bitte auswählen</option>
+                  <option>Private Versicherung</option>
+                  <option>Gesetzliche Versicherung</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <!-- The save button for overwriting an event -->
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Speichern
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 'deleteModal' modal for deleting an event -->
+    <div
+      class="modal fade"
+      id="deleteModal"
+      tabindex="-1"
+      aria-labelledby="deleteModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="deleteModalLabel">
+              Termin löschen
+            </h1>
+            <!-- The close button for the modal -->
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <!-- The warning message for the modal -->
+          <div class="modal-body">
+            <p>Termin wirklich löschen?</p>
+          </div>
+          <div class="modal-footer">
+            <!-- The button for deleting the event -->
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Löschen
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- This section contains the overview of the website -->
+    <div class="container py-4 mt-5">
+      <!-- This div contains the login and registration forms -->
+      <div class="p-5 mb-4 rounded-3 shadow bg-white">
+        <div class="container-fluid py-3">
+          <!-- LOGIN TABS-->
+          <div id="loginDiv">
+            <h1 class="display-5 fw-bold">Ärzte Team SEEBURGER</h1>
+            <div class="container">
+              <!-- Navigation tabs for Login and Register -->
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    id="login-tab"
+                    data-toggle="tab"
+                    href="#login"
+                    role="tab"
+                    aria-controls="login"
+                    aria-selected="true"
+                    onclick="anmelden()"
+                    >Anmelden</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="register-tab"
+                    data-toggle="tab"
+                    href="#register"
+                    role="tab"
+                    aria-controls="register"
+                    aria-selected="false"
+                    >Registrieren</a
+                  >
+                </li>
+              </ul>
+              <!-- Login and Register forms -->
+              <div class="tab-content" id="myTabContent">
+                <!-- Login form -->
+                <div
+                  class="tab-pane fade show active"
+                  id="login"
+                  role="tabpanel"
+                  aria-labelledby="login-tab"
+                >
+                  <form>
+                    <!-- Form field for username -->
+                    <div class="form-group">
+                      <label for="username">Benutzername</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        placeholder="Benutzername eingeben"
+                      />
+                    </div>
+                    <!-- Form field for password -->
+                    <div class="form-group">
+                      <label for="password">Passwort</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Passwort"
+                      />
+                    </div>
+                  </form>
+                  <!-- Submit button for Login form -->
+                  <button
+                    id="submitButton"
+                    type="submit"
+                    class="btn btn-primary mt-3"
+                    onclick="anmelden()"
+                  >
+                    Anmelden
+                  </button>
+                </div>
+                <!-- Register form -->
+                <div
+                  class="tab-pane fade"
+                  id="register"
+                  role="tabpanel"
+                  aria-labelledby="register-tab"
+                >
+                  <form>
+                    <!-- Form field for new username -->
+                    <div class="form-group">
+                      <label for="new-username">Benutzername</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="new-username"
+                        placeholder="Benutzername eingeben"
+                      />
+                    </div>
+                    <!-- Form field for user type -->
+                    <div class="form-group">
+                      <label for="user-type">Rolle</label>
+                      <select class="form-control caret" id="user-type">
+                        <option>Kunde</option>
+                        <option>Arzt</option>
+                        <option>Admin</option>
+                      </select>
+                    </div>
+                    <!-- Form field for new password -->
+                    <div class="form-group">
+                      <label for="new-password">Passwort</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="new-password"
+                        placeholder="Passwort"
+                      />
+                    </div>
+                    <!-- Form field for confirming new password -->
+                    <div class="form-group">
+                      <label for="confirm-password">Passwort bestätigen</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirm-password"
+                        placeholder="Passwort bestätigen"
+                      />
+                    </div>
+                  </form>
+                  <!-- Button for creating a new account -->
+                  <button
+                    type="submit"
+                    class="btn btn-primary mt-3"
+                    onclick="addUser()"
+                  >
+                    Account erstellen
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- This code defines a view for an appointment list. -->
+          <!-- The view consists of a container with a welcome message and two columns. -->
+          <div id="listDiv" class="d-none">
+            <div class="container">
+              <h1
+                id="userLoginDisplayName"
+                class="display-7 fw-bold d-inline-block"
+              ></h1>
+
+              <div class="row">
+                <!-- The first column displays a table with appointments and their details. -->
+                <div class="col">Terminübersicht</div>
+                <div class="col-2 text-center">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="abmelden()"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+              <div class="row">
+                <!-- The second column contains a control panel with buttons for adding, editing and deleting appointments. -->
+                <div class="col">
+                  <div id="Terminliste">
+                    <!-- The table will be generated dynamically -->
+                  </div>
+                </div>
+                <div
+                  class="col col-2 d-flex justify-content-center align-items-center"
+                >
+                  <div id="controlPanel">
+                    <!-- User panel for regular users -->
+                    <div id="userPanel">
+                      <!-- Button to add a new entry -->
+                      <div id="btnAdd" class="mt-2">
+                        <button
+                          type="button"
+                          class="btn btn-success btn-sm w-100"
+                          data-bs-toggle="modal"
+                          data-bs-target="#addModal"
+                        >
+                          Anlegen
+                        </button>
+                      </div>
+                    </div>
+                    <!-- Admin panel for admin users -->
+                    <div id="adminPanel" class="d-none">
+                      <!-- Button to edit an existing entry -->
+                      <div id="btnEdit" class="mt-2">
+                        <button
+                          type="button"
+                          class="btn btn-secondary btn-sm w-100"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editModal"
+                          onclick="edit()"
+                        >
+                          Bearbeiten
+                        </button>
+                      </div>
+                      <!-- Button to delete an existing entry -->
+                      <div id="btnDelete" class="mt-2">
+                        <button
+                          type="button"
+                          class="btn btn-danger btn-sm w-100"
+                          data-bs-toggle="modal"
+                          data-bs-target="#deleteModal"
+                        >
+                          Löschen
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="src/script.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

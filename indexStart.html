@@ -15,113 +15,119 @@
     <div class="container py-4 mt-5">
       <div class="p-5 mb-4 rounded-3 shadow bg-white">
         <div class="container-fluid py-5">
-          <h1 class="display-5 fw-bold">Ärzte Team SEEBURGER </h1>
-          <div class="container">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  id="login-tab"
-                  data-toggle="tab"
-                  href="#login"
-                  role="tab"
-                  aria-controls="login"
-                  aria-selected="true"
-                  >Anmelden</a
+          <div>
+            <h1 class="display-5 fw-bold">Ärzte Team SEEBURGER</h1>
+            <div class="container">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    id="login-tab"
+                    data-toggle="tab"
+                    href="#login"
+                    role="tab"
+                    aria-controls="login"
+                    aria-selected="true"
+                    >Anmelden</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="register-tab"
+                    data-toggle="tab"
+                    href="#register"
+                    role="tab"
+                    aria-controls="register"
+                    aria-selected="false"
+                    >Registrieren</a
+                  >
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="login"
+                  role="tabpanel"
+                  aria-labelledby="login-tab"
                 >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  id="register-tab"
-                  data-toggle="tab"
-                  href="#register"
-                  role="tab"
-                  aria-controls="register"
-                  aria-selected="false"
-                  >Registrieren</a
+                  <form>
+                    <div class="form-group">
+                      <label for="username">Benutzername</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        placeholder="Benutzername eingeben"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Passwort</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Passwort"
+                      />
+                    </div>
+                    <button
+                      id="submitButton"
+                      type="submit"
+                      class="btn btn-primary mt-3"
+                    >
+                      Anmelden
+                    </button>
+                  </form>
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="register"
+                  role="tabpanel"
+                  aria-labelledby="register-tab"
                 >
-              </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-              <div
-                class="tab-pane fade show active"
-                id="login"
-                role="tabpanel"
-                aria-labelledby="login-tab"
-              >
-                <form>
-                  <div class="form-group">
-                    <label for="username">Benutzername</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="username"
-                      placeholder="Benutzername eingeben"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Passwort</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="password"
-                      placeholder="Passwort"
-                    />
-                  </div>
-                  <button id="submitButton" type="submit" class="btn btn-primary mt-3">
-                    Anmelden
-                  </button>
-                </form>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="register"
-                role="tabpanel"
-                aria-labelledby="register-tab"
-              >
-                <form>
-                  <div class="form-group">
-                    <label for="new-username">Benutzername</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="new-username"
-                      placeholder="Benutzername eingeben"
-                    />
-                  </div>
+                  <form>
+                    <div class="form-group">
+                      <label for="new-username">Benutzername</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="new-username"
+                        placeholder="Benutzername eingeben"
+                      />
+                    </div>
 
-                  <div class="form-group">
-                    <label for="user-type">Rolle</label>
-                    <select class="form-control caret" id="user-type">
-                      <option>Kunde</option>
-                      <option>Arzt</option>
-                      <option>Admin</option>
-                    </select>
-                  </div>
+                    <div class="form-group">
+                      <label for="user-type">Rolle</label>
+                      <select class="form-control caret" id="user-type">
+                        <option>Kunde</option>
+                        <option>Arzt</option>
+                        <option>Admin</option>
+                      </select>
+                    </div>
 
-                  <div class="form-group">
-                    <label for="new-password">Passwort</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="new-password"
-                      placeholder="Passwort"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="confirm-password">Passwort bestätigen</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="confirm-password"
-                      placeholder="Passwort bestätigen"
-                    />
-                  </div>
-                  <button type="submit" class="btn btn-primary mt-3">
-                    Account erstellen
-                  </button>
-                </form>
+                    <div class="form-group">
+                      <label for="new-password">Passwort</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="new-password"
+                        placeholder="Passwort"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="confirm-password">Passwort bestätigen</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirm-password"
+                        placeholder="Passwort bestätigen"
+                      />
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">
+                      Account erstellen
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
