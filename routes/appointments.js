@@ -35,7 +35,27 @@ router.get("/:user", async (req, res) => {
 
 // Route for creating a new appointmnet
 router.post("/", async (req, res) => {
-  // TODO: Implement apoointment creation logic
+  try {
+    // Get the user data from the request body
+    const { title, date, time, insurance, user, name } = req.body;
+
+    // Create a new user document with the hashed password
+    const newApp = await Appointments.create({
+      title: title,
+      date: date,
+      time: time,
+      insurance: insurance,
+      user: user,
+      name: name
+    });
+
+    // Return the new app document as the response
+    res.json(newApp);
+  } catch (error) {
+    // Handle any errors that occur during user creation
+    console.error(error);
+    res.status(500).json({ error: "Failed to create appointment" });
+  }
 });
 
 // Route for updating an existing appointment
