@@ -1,0 +1,183 @@
+<!-- This is a HTML file for a modal-based event scheduler. 
+  It contains three modals, 'addModal', 'editModal' and 'deleteModal', 
+  for adding, editing and deleting events respectively. 
+  The events can be scheduled with details like title, date, time and insurance type. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ärztepraxis SEEBURGER</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- This section contains the overview of the website -->
+    <div class="container py-4 mt-5">
+      <!-- This div contains the login and registration forms -->
+      <div class="p-5 mb-4 rounded-3 shadow bg-white">
+        <div class="container-fluid py-3">
+          <!-- LOGIN TABS-->
+          <div id="loginDiv">
+            <h1 class="display-5 fw-bold">Ärzte Team SEEBURGER</h1>
+            <div class="container">
+              <!-- Navigation tabs for Login and Register -->
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    id="login-tab"
+                    data-toggle="tab"
+                    href="#login"
+                    role="tab"
+                    aria-controls="login"
+                    aria-selected="true"
+                    >Anmelden</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="register-tab"
+                    data-toggle="tab"
+                    href="#register"
+                    role="tab"
+                    aria-controls="register"
+                    aria-selected="false"
+                    >Registrieren</a
+                  >
+                </li>
+              </ul>
+              <!-- Login and Register forms -->
+              <div class="tab-content" id="myTabContent">
+                <!-- Login form -->
+                <div
+                  class="tab-pane fade show active"
+                  id="login"
+                  role="tabpanel"
+                  aria-labelledby="login-tab"
+                >
+                  <form id="formLoginUser">
+                    <!-- Form field for username -->
+                    <div class="form-group">
+                      <label for="username">Benutzername</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        placeholder="Benutzername eingeben"
+                      />
+                    </div>
+                    <!-- Form field for password -->
+                    <div class="form-group">
+                      <label for="password">Passwort</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        placeholder="Passwort"
+                      />
+                    </div>
+                  </form>
+                  <!-- Submit button for Login form -->
+                  <a
+                    id="submitButton"
+                    type="submit"
+                    class="btn btn-primary mt-3"
+                    class="btn btn-primary btn-lg"
+                    href="/app"
+                    role="button"
+                    login-button
+                    >Login</a
+                  >
+                </div>
+                <!-- Register form -->
+                <div
+                  class="tab-pane fade"
+                  id="register"
+                  role="tabpanel"
+                  aria-labelledby="register-tab"
+                >
+                  <form id="addUserForm">
+                    <!-- Form field for new username -->
+                    <div class="form-group">
+                      <label for="new-username">Benutzername</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="new-username"
+                        placeholder="Benutzername eingeben"
+                      />
+                      <div id="usernameExists"></div>
+                    </div>
+                    <!-- Form field for user type -->
+                    <div class="form-group">
+                      <label for="user-type">Rolle</label>
+                      <div class="input-group">
+                        <select id="roleSelector" class="form-select">
+                          <option selected>Choose an option...</option>
+                          <option value="1">admin</option>
+                          <option value="2">doctor</option>
+                          <option value="3">user</option>
+                        </select>
+                      </div>
+                    </div>
+                    <!-- Form field for new password -->
+                    <div class="form-group">
+                      <label for="new-password">Passwort</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="new-password"
+                        placeholder="Passwort"
+                      />
+                    </div>
+                    <!-- Form field for confirming new password -->
+                    <div class="form-group">
+                      <label for="confirm-password">Passwort bestätigen</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="confirm-password"
+                        placeholder="Passwort bestätigen"
+                      />
+                    </div>
+                  </form>
+                  <!-- Button for creating a new account -->
+                  <button
+                    type="submit"
+                    class="btn btn-primary mt-3"
+                    id="createUserBtn"
+                    register-button
+                  >
+                    Account erstellen
+                  </button>
+                  <div id="usernameCreated"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="module" src="static/src/user.js" defer></script>
+
+  </body>
+</html>

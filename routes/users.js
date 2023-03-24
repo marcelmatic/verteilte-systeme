@@ -99,52 +99,7 @@ router.delete("/:id", (req, res) => {
   // TODO: Implement user deletion logic
 });
 
-// ## ROUTES FOR APPOINTMENTS ##
 
-// Route for getting all users
-router.get("/", async (req, res) => {
-  try {
-    // Get the username and password from the request body
-    const { title, date, time, insurance } = req.body;
-    // Look for a user in the database with the provided credentials
-    const appointments = await Appointments.findOne({
-      title: title,
-      date: date,
-      time: time,
-      insurance: insurance,
-    });
-    // If no user is found, return an error message
-    if (!appointments) {
-      return res.status(401).json({ message: "Invalid data" });
-    }
-    // If a user is found, return the user object as JSON
-    res.json(appointments);
-  } catch (error) {
-    // If an error occurs, return an error message and status code 500
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// Route for getting a single user by ID
-router.get("/:id", (req, res) => {
-  // Send the user ID as the response
-  res.send(req.params.id);
-});
-
-// Route for creating a new user
-router.post("/", async (req, res) => {
-  // TODO: Implement user creation logic
-});
-
-// Route for updating an existing user
-router.patch("/", (req, res) => {
-  // TODO: Implement user update logic
-});
-
-// Route for deleting a user by ID
-router.delete("/:id", (req, res) => {
-  // TODO: Implement user deletion logic
-});
 
 // Export the router module
 module.exports = router;

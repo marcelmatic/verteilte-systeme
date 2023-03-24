@@ -9,7 +9,7 @@ const Appointments = require("../models/appointments"); // Import the User model
 router.get("/", async (req, res) => {
   try {
     // Find all appointments in the database
-    const appointments = await Appointments.find();
+    const appointments = await Appointments.find().sort({ date: 1 });
     // Return the appointments object as JSON
     res.json(appointments);
   } catch (error) {
@@ -33,10 +33,11 @@ router.get("/:user", async (req, res) => {
   }
 });
 
+
 // Route for creating a new appointmnet
 router.post("/", async (req, res) => {
   try {
-    // Get the user data from the request body
+    // Get the data from the request body
     const { title, date, time, insurance, user, name } = req.body;
 
     // Create a new user document with the hashed password
@@ -46,7 +47,7 @@ router.post("/", async (req, res) => {
       time: time,
       insurance: insurance,
       user: user,
-      name: name
+      name: name,
     });
 
     // Return the new app document as the response
@@ -59,13 +60,51 @@ router.post("/", async (req, res) => {
 });
 
 // Route for updating an existing appointment
-router.patch("/", (req, res) => {
-  // TODO: Implement apoointment update logic
+router.patch("/:id", async (req, res) => {
+  try {
+    const appointment = await Appointments.findByIdAndUpdate(
+      req.params.id,
+      {
+        title: req.body.title,
+        date: req.body.date,
+        time: req.body.time,
+        insurance: req.body.insurance,
+        name: req.body.name,
+      },
+      { new: true }
+    );
+
+    if (!appointment) {
+      return res.status(404).json({ message: "Appointment not found" });
+    }
+
+    res.json(appointment);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
-// Route for deleting an apoointment by ID
-router.delete("/:id", (req, res) => {
-  // TODO: Implement apoointment deletion logic
+// Route for deleting an appointment by ID
+router.delete("/:id", async (req, res) => {
+  try {
+    // Extract the appointment ID from the request parameters
+    const appointmentId = req.params.id;
+
+    // Call the deleteOne method to delete the appointment by ID
+    const deleteResult = await Appointments.deleteOne({ _id: appointmentId });
+
+    // Check if the appointment was deleted
+    if (deleteResult.deletedCount === 0) {
+      return res.status(404).json({ error: "Appointment not found" });
+    }
+
+    // Return a success message
+    return res.json({ message: "Appointment deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Failed to delete appointment" });
+  }
 });
 
 // Export the router module

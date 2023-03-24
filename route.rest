@@ -19,9 +19,9 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "username": "blut",
-  "role": "2023-01-01",
-  "password": "10:10"
+  "username": "a",
+  "role": "admin",
+  "password": "a"
 }
 
 ###
@@ -30,8 +30,21 @@ POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-  "username": "admin",
+  "username": "maticmar",
   "password": "admin"
+}
+
+###
+
+DELETE http://localhost:3000/appointments/6402152e153401bbfcae2a76
+
+###
+
+PATCH http://localhost:3000/appointments/6400a33f1c3138d80c35a9f6
+Content-Type: application/json
+
+{
+  "title": "NEUER TITEL"
 }
 
 ###

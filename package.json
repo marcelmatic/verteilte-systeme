@@ -4,7 +4,11 @@
   "description": "Create Single Page Application",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "concurrently \"parcel serve index.html --public-url / --dist-dir dist\" \"nodemon server.js\"",
+    "dev": "nodemon server.js",
+    "predeploy": "npm run build",
+    "deploy": "echo 'Deploying the app'",
+    "postdeploy": "echo 'The app has been deployed'"
   },
   "repository": {
     "type": "git",
@@ -24,8 +28,12 @@
     "path-browserify": "^1.0.1"
   },
   "devDependencies": {
+    "babel-loader": "^9.1.2",
+    "concurrently": "^7.6.0",
     "dotenv": "^16.0.3",
+    "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.20",
+    "parcel": "^2.8.3",
     "vite": "^4.1.4",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"

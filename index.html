@@ -51,6 +51,17 @@
                   required
                 />
               </div>
+              <!-- Input field for customer name -->
+              <div class="form-group">
+                <label for="cName">Name:</label>
+                <input
+                  type="text"
+                  id="cName"
+                  name="cName"
+                  class="form-control"
+                  required
+                />
+              </div>
               <!-- Input field for event date -->
               <div class="form-group">
                 <label for="date">Datum:</label>
@@ -76,7 +87,7 @@
               <!-- Dropdown for insurance type -->
               <div class="form-group">
                 <label for="user-type">Versicherung: </label>
-                <div  class="input-group">
+                <div class="input-group">
                   <select id="insuranceAdd" class="form-select">
                     <option selected>Choose an option...</option>
                     <option value="1">privat</option>
@@ -135,6 +146,17 @@
                   class="form-control"
                 />
               </div>
+              <!-- Input field for customer name -->
+              <div class="form-group">
+                <label for="cNameEdit">Name:</label>
+                <input
+                  type="text"
+                  id="cNameEdit"
+                  name="cNameEdit"
+                  class="form-control"
+                  required
+                />
+              </div>
               <!-- Input field for event date -->
               <div class="form-group">
                 <label for="date">Datum:</label>
@@ -158,7 +180,7 @@
               <!-- Dropdown for insurance type -->
               <div class="form-group">
                 <label for="user-type">Versicherung: </label>
-                <div  class="input-group">
+                <div class="input-group">
                   <select id="insuranceEdit" class="form-select">
                     <option selected>Choose an option...</option>
                     <option value="1">privat</option>
@@ -174,6 +196,7 @@
               type="button"
               class="btn btn-primary"
               data-bs-dismiss="modal"
+              onclick="updateAppointment()"
             >
               Speichern
             </button>
@@ -214,6 +237,7 @@
               type="button"
               class="btn btn-danger"
               data-bs-dismiss="modal"
+              onclick="deleteAppointment()"
             >
               Löschen
             </button>
@@ -317,7 +341,6 @@
                         placeholder="Benutzername eingeben"
                       />
                       <div id="usernameExists"></div>
-
                     </div>
                     <!-- Form field for user type -->
                     <div class="form-group">
@@ -370,15 +393,44 @@
           <!-- The view consists of a container with a welcome message and two columns. -->
           <div id="listDiv" class="d-none">
             <div class="container">
-              <h1
-                id="userLoginDisplayName"
-                class="display-7 fw-bold d-inline-block"
-              ></h1>
+              <div class="row">
+                <div class="col">
+                  <h1 class="display-7 fw-bold d-inline-block">
+                    Herzlich Willkommen
+                  </h1>
+                </div>
+                <div class="col">
+                  <input
+                    type="text"
+                    class="form-control display-7 fw-bold d-inline-block border-0 bg-transparent"
+                    id="userLoginDisplayName"
+                    disabled
+                  />
+                </div>
+              </div>
 
               <div class="row">
                 <!-- The first column displays a table with appointments and their details. -->
                 <div class="col">Terminübersicht</div>
                 <div class="col-2 text-center">
+                  <div class="btn-group">
+                    <button
+                      class="btn btn-secondary btn-sm dropdown-toggle"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Small button
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#">Profil bearbeiten</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Logout</a>
+                      </li>
+                    </ul>
+                  </div>
                   <button
                     type="button"
                     class="btn btn-secondary"
@@ -461,6 +513,5 @@
     <script src="src/script.js"></script>
     <script src="src/appointments.js"></script>
     <script src="src/user.js"></script>
-
   </body>
 </html>
