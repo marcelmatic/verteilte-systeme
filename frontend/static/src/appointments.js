@@ -1,9 +1,9 @@
 let uName;
 let userRole;
 
+//TOKAR
 export function checkAdmin(username) {
   uName = username;
-  console.log("START UNAME: " + uName);
 
   $.ajax({
     url: "http://localhost:3000/users/" + username,

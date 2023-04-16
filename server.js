@@ -1,6 +1,6 @@
 // Load required modules
 require("dotenv").config(); // Load environment variables from .env file
-const axios = require("axios"); // Use the Axios package to make HTTP requests
+//const axios = require("axios"); // Use the Axios package to make HTTP requests
 const express = require("express"); // Use Express to create the server
 const cors = require("cors"); // Use the CORS package to enable Cross-Origin Resource Sharing
 const path = require("path");

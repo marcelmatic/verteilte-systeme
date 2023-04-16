@@ -44,7 +44,6 @@ export function loginn(e) {
     success: function (data) {
       // If the login is successful, set the isLoggedIn variable to true, navigate to the Appointments page, and set the username
       const user = data;
-      console.log("SUIII");
       setLoggedIn(true);
       navigateTo(e.target.href);
       setUsername(data.username);

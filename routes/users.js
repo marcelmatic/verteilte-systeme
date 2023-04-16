@@ -89,15 +89,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Route for updating an existing user
-router.patch("/", (req, res) => {
-  // TODO: Implement user update logic
-});
-
-// Route for deleting a user by ID
-router.delete("/:id", (req, res) => {
-  // TODO: Implement user deletion logic
-});
 
 
 

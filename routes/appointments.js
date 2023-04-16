@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Route for getting a single appointment by username
+// Route for getting appointments by username
 router.get("/:user", async (req, res) => {
   try {
     const username = req.params.user;

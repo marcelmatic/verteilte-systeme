@@ -1,20 +1,20 @@
-# Use the official Node.js LTS image as the base image
-FROM node:lts
+FROM node:16
 
-# Set the working directory inside the container
-WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app
 
-# Copy the package.json and package-lock.json files to the working directory
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
 COPY package*.json ./
 
-# Install the dependencies
-RUN npm ci
+RUN npm install
+# If you are building your code for production
+# RUN npm ci --omit=dev
 
-# Copy the rest of the application code to the working directory
+# Bundle app source
 COPY . .
 
-# Expose the ports your application uses (3000 for backend, 4000 for frontend)
 EXPOSE 3000 4000
 
-# Start the application
-CMD ["node", "server.js"]
+CMD [ "node", "server.js" ]

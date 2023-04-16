@@ -4,8 +4,8 @@
   "description": "Create Single Page Application",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"parcel serve index.html --public-url / --dist-dir dist\" \"nodemon server.js\"",
-    "dev": "nodemon server.js",
+    "dev": "concurrently \"parcel serve index.html --public-url / --dist-dir dist\" \"nodemon server.js\"",
+    "start": "nodemon server.js",
     "predeploy": "npm run build",
     "deploy": "echo 'Deploying the app'",
     "postdeploy": "echo 'The app has been deployed'"
